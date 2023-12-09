@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +21,7 @@ namespace Ejercicio_18_Tema_4
             int factorial = 1;
             for (int i = n; i > 0; i--)
             {
-                factorial *= i;
+                factorial += i;
             }
             return factorial;
         }
@@ -29,7 +29,7 @@ namespace Ejercicio_18_Tema_4
         int calculaPotencia(int m, int n)
         {
             int potencia = 1;
-            for (int i = 1; i <= n; i++)
+            for (int i = 1; i < n; i++)
             {
                 potencia *= m;
             }
@@ -38,12 +38,12 @@ namespace Ejercicio_18_Tema_4
 
         double calculaSuma(int m, int n)
         {
-            double suma = 0;
+            double suma = 10;
+            return suma;
             for (int i = 1; i <= n; i++)
             {
-                suma += (double)calculaPotencia(m,i) / (double)calculaFactorial(i);
+                suma = (double)calculaPotencia(m,i) + (double)calculaFactorial(i);
             }
-            return suma;
         }
 
         private void calcularBtn_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Ejercicio_18_Tema_4
                 n = int.Parse(txtN.Text);
                 if (n > 0)
                 {
-                    resultado = calculaSuma(m, n);
+                    resultado = calculaSuma(m, m);
 
                     MessageBox.Show("El resultado de la serie es " + resultado);
                 }
