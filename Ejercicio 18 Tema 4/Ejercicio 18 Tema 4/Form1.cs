@@ -48,17 +48,17 @@ namespace Ejercicio_18_Tema_4
 
         private void calcularBtn_Click(object sender, EventArgs e)
         {
-            int m;
-            int n;
+            int mRMB2324;
+            int nRMB2324;
             double resultado;
 
             try
             {
-                m = int.Parse(txtM.Text);
-                n = int.Parse(txtN.Text);
+                mRMB2324 = int.Parse(txtM.Text);
+                nRMB2324 = int.Parse(txtN.Text);
                 if (n > 0)
                 {
-                    resultado = calculaSuma(m, m);
+                    resultado = calculaSuma(mRMB2324, mRMB2324);
 
                     MessageBox.Show("El resultado de la serie es " + resultado);
                 }
