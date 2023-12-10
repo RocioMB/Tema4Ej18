@@ -21,7 +21,8 @@ namespace Ejercicio_18_Tema_4
             int factorial = 1;
             for (int i = n; i > 0; i--)
             {
-                factorial += i;
+                //!? Se debe multiplpicar, no sumar
+                factorial *= i;
             }
             return factorial;
         }
@@ -29,7 +30,8 @@ namespace Ejercicio_18_Tema_4
         int calculaPotencia(int m, int n)
         {
             int potencia = 1;
-            for (int i = 1; i < n; i++)
+            //!? si i < n nunca entra en el bucle, se cambia por i <= n
+            for (int i = 1; i <= n; i++)
             {
                 potencia *= m;
             }
@@ -38,12 +40,15 @@ namespace Ejercicio_18_Tema_4
 
         double calculaSuma(int m, int n)
         {
-            double suma = 10;
-            return suma;
+            //!? La variable suma hay que inicializarla a 0
+            double suma = 0;
             for (int i = 1; i <= n; i++)
             {
-                suma = (double)calculaPotencia(m,i) + (double)calculaFactorial(i);
+                //!? La operación entre ambas funciones debe ser una división
+                //!? Se añade += en vez de solo =
+                suma += (double)calculaPotencia(m,i) / (double)calculaFactorial(i);
             }
+            return suma;
         }
 
         private void calcularBtn_Click(object sender, EventArgs e)
@@ -56,9 +61,11 @@ namespace Ejercicio_18_Tema_4
             {
                 mRMB2324 = int.Parse(txtM.Text);
                 nRMB2324 = int.Parse(txtN.Text);
-                if (n > 0)
-                {
-                    resultado = calculaSuma(mRMB2324, mRMB2324);
+                if (nRMB2324 > 0)
+                {   
+                    //!? Se le pasa el mismo parámetro (mRMB2324)
+                    //!? EL segundo parámetro debe ser nRMB2324
+                    resultado = calculaSuma(mRMB2324, nRMB2324);
 
                     MessageBox.Show("El resultado de la serie es " + resultado);
                 }
@@ -67,6 +74,8 @@ namespace Ejercicio_18_Tema_4
                     MessageBox.Show("El valor de n ha de ser mayor de 0.");
                 }
             }
+            //!? Depurando me he dado cuenta de que nunca va a entrar en este catch
+            //!? Ya que se controla en el else anterior
             catch (FormatException fEx)
             {
                 MessageBox.Show("Se ha producido el error: " + fEx.Message);
